@@ -24,3 +24,9 @@
 .list-group-item:hover {
     background-color: #eee;
 }
+
+
+/* WEATHER */
+.parent-input-margin {
+    margin-right: 8px;
+}

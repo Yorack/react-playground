@@ -4,6 +4,7 @@ import Home from './home';
 import VideoApp from './Youtube/video-app';
 import BookApp from './Library/book-app';
 import WeatherApp from './Weather/weather-app';
+import testApp from './testFRED/testApp';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
@@ -24,6 +25,9 @@ export default class App extends Component {
                         <li>
                             <Link to="/weather">Weather</Link>
                         </li>
+                        <li>
+                            <Link to="/test">test</Link>
+                        </li>
                     </ul>
 
                     <hr />
@@ -32,6 +36,7 @@ export default class App extends Component {
                     <Route path="/video" component={VideoApp} />
                     <Route path="/book" component={BookApp} />
                     <Route path="/weather" component={WeatherApp} />
+                    <Route path="/test" component={testApp} />
                 </div>
             </Router>
         );
