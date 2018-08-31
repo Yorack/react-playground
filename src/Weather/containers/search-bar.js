@@ -62,6 +62,7 @@ class SearchBar extends Component {
                         id="search"
                         value={this.state.term}
                         onChange={(e) => this.onInputChange(e)}
+                        autoComplete={'off'}
                         fullWidth
                     />
                 </FormControl>

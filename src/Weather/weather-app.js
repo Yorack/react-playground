@@ -1,32 +1,31 @@
 import React, {Component} from 'react';
 import {applyMiddleware, createStore} from 'redux';
-import ReduxPromise from 'redux-promise'
+import ReduxPromise from 'redux-promise';
 import {Provider} from 'react-redux';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
 import reducers from './reducers';
 import SearchBar from './containers/search-bar';
+import { withStyles } from '@material-ui/core/styles';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
-const theme = createMuiTheme({
-    palette: {
-        primary: blue,
-        secondary: {
-            main: '#d50000',
-        },
+
+const styles = {
+    root: {
+        marginTop: 10,
     },
-});
+};
 
 class WeatherApp extends Component {
     render() {
+        const { classes } = this.props;
+
         return (
-            <MuiThemeProvider theme={theme}>
-                <Provider store={createStoreWithMiddleware(reducers)}>
-                    <SearchBar/>
-                </Provider>
-            </MuiThemeProvider>
+            <Provider store={createStoreWithMiddleware(reducers)}>
+                <div className={classes.root}>
+                    <SearchBar />
+                </div>
+            </Provider>
         );
     }
 };
 
-export default WeatherApp;
+export default withStyles(styles)(WeatherApp);
