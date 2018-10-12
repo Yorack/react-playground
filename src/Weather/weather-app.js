@@ -29,6 +29,6 @@ class WeatherApp extends Component {
             </Provider>
         );
     }
-};
+}
 
 export default withStyles(styles)(WeatherApp);

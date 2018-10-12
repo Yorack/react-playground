@@ -5,7 +5,7 @@ const ROUTE_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_K
 
 export const weatherActionType = {
     FETCH_WEATHER: 'FETCH_WEATHER',
-}
+};
 
 export const weatherAction = {
     fetchWeather: (city) => {
@@ -19,4 +19,4 @@ export const weatherAction = {
             payload: request,
         }
     }
-}
+};

@@ -83,7 +83,7 @@ class WeatherList extends Component {
             </Table>
         );
     }
-};
+}
 
 const mapStateToProps = ({weather}) => {
     return {weather};
