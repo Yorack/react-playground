@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {createMuiTheme, MuiThemeProvider, withStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './home';
 import VideoApp from './Youtube/video-app';
 import BookApp from './Library/book-app';
 import WeatherApp from './Weather/weather-app';
+import BlogApp from './Blog/blog-app';
 import testApp from './testFRED/testApp';
-import {Router, Route, Link} from "react-router-dom";
+import {Link, Route, Router} from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar/AppBar';
-import Button from '@material-ui/core/Button/Button';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar/Toolbar';
 import '../style/style.css';
 import {Switch} from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory'
 import Tabs from "@material-ui/core/Tabs/Tabs";
 import Tab from "@material-ui/core/Tab/Tab";
+import NoMatch from "./noMatch";
 
 const theme = createMuiTheme({
     palette: {
@@ -81,6 +80,7 @@ class App extends Component {
                                 <Tab label="Video" value={"/video"} component={Link} to="/video" />
                                 <Tab label="Book" value={"/book"} component={Link} to="/book" />
                                 <Tab label="Weather" value={"/weather"} component={Link} to="/weather" />
+                                <Tab label="Blog" value={"/blog"} component={Link} to="/blog" />
                                 <Tab label="test bar" value={"/test"} component={Link} to="/test" />
                             </Tabs>
                         </AppBar>
@@ -90,7 +90,9 @@ class App extends Component {
                                 <Route exact path="/video" component={VideoApp}/>
                                 <Route exact path="/book" component={BookApp}/>
                                 <Route exact path="/weather" component={WeatherApp}/>
+                                <Route exact path="/blog" component={BlogApp}/>
                                 <Route exact path="/test" component={testApp}/>
+                                <Route component={NoMatch} />
                             </Switch>
                         </div>
                     </div>
