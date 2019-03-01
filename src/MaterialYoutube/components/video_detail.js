@@ -7,9 +7,9 @@ export default class VideoDetail extends Component {
 
     render() {
         const video = this.props.video;
-        
-        if(!video) {
-            return <div>loading....</div>;;
+
+        if (!video) {
+            return <div>loading....</div>;
         }
         const videoId = video.id.videoId;
         const videoUrl = `https://www.youtube.com/embed/${videoId}`;
@@ -24,6 +24,6 @@ export default class VideoDetail extends Component {
                     <div>{video.snippet.description}</div>
                 </div>
             </div>
-        )
+        );
     }
 }

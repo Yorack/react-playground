@@ -11,7 +11,7 @@ export default class SearchBar extends Component {
     }
 
     onInputChange(term) {
-        console.log('Input Value: ' + term)
+        console.log('Input Value: ' + term);
 
         this.props.onSearchTermChange(term);
         this.setState({term: term});
