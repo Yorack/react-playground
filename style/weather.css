@@ -1,6 +1,7 @@
 .graph_legend {
     text-align: center;
     padding-left: 25px;
+    font-size: 1.3em;
 }
 
 td:first-of-type, td:first-of-type > div {
