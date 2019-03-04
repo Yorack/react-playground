@@ -1,14 +1,25 @@
 import React from "react";
 import {Area, AreaChart, Label, Tooltip, XAxis, YAxis} from "recharts";
 import _ from 'lodash';
+import {makeStyles} from '@material-ui/styles';
 
 function average(data) {
     return _.round(_.sum(data) / data.length);
 }
 
+const useStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+}));
+
 export default (props) => {
+    const classes = useStyles();
+
     return (
-        <div>
+        <div className={classes.container}>
             <AreaChart width={300} height={170} data={props.data}>
                 <Area type="monotone" dataKey={props.dataKey} stroke={props.color} fill={props.color}
                       unit={props.units}/>
@@ -22,6 +33,5 @@ export default (props) => {
                 {average(props.data.map(data => data[props.dataKey]))} {props.units}
             </div>
         </div>
-
     )
 }

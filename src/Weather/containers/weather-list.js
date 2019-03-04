@@ -21,7 +21,7 @@ const styles = theme => ({
     },
     th: {
         textAlign: 'center',
-    }
+    },
 });
 
 class WeatherList extends Component {
@@ -29,8 +29,6 @@ class WeatherList extends Component {
         const id = cityData.city.id;
         const name = cityData.city.name;
         const { lat, lon } = cityData.city.coord;
-
-        console.log(cityData);
 
         const data = cityData.list.map(weather => {
             return {
@@ -40,7 +38,6 @@ class WeatherList extends Component {
             }
         });
 
-        console.log(data);
         return <TableRow key={id}>
             <TableCell>
                 {name}

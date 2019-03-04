@@ -11,7 +11,7 @@ const commonMiddleware = store => next => action => {
 
             q: action.payload,
             type: 'video',
-            maxResults: 10,
+            maxResults: 15,
         };
 
         axios.get(ROOT_URL, { params: params })
