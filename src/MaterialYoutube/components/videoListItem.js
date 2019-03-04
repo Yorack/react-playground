@@ -17,6 +17,13 @@ const styles = theme => ({
         marginBottom: 10,
         height: 100,
     },
+    cardFull: {
+        display: 'flex',
+        cursor: 'pointer',
+        width: '100%',
+        marginBottom: 10,
+        height: 100,
+    },
     cardArea: {
         display: 'flex',
         height: 100,
@@ -45,13 +52,18 @@ class VideoListItem extends Component {
     }
 
     render() {
-        const { classes, video } = this.props;
-        // const onVideoSelect = this.props.onVideoSelect;
-        const imageUrl = video.snippet.thumbnails.default.url;
+        const { classes, video, selectedVideo } = this.props;
+
+        if (!video) {
+            return null
+        }
+
+        const imageUrl = video.snippet.thumbnails.medium.url;
+
 
         return (
-            <Card className={classes.card}>
-                <CardActionArea className={classes.cardArea} onClick={() => {console.log("clicked")}}>
+            <Card className={selectedVideo ? classes.cardFull : classes.card}>
+                <CardActionArea className={classes.cardArea} onClick={() => this.props.commonActions.selectVideo(video)}>
                     <CardMedia
                         className={classes.cover}
                         image={imageUrl}
@@ -59,11 +71,11 @@ class VideoListItem extends Component {
                     />
                     <div className={classes.details}>
                         <CardContent className={classes.content}>
-                            <Typography className={classes.title} component="h6" variant="h6">
+                            <Typography className={classes.title} variant="h6">
                                 {video.snippet.title}
                             </Typography>
                             <Typography variant="subtitle1" color="textSecondary">
-                                test
+                                {video.snippet.channelTitle}
                             </Typography>
                         </CardContent>
                     </div>
@@ -73,8 +85,14 @@ class VideoListItem extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        selectedVideo: state.common.selectedVideo
+    };
+};
+
 const mapDispatchToProps = dispatch => ({
     commonActions: bindActionCreators(commonActions, dispatch),
 });
 
-export default withStyles(styles)(connect(null, mapDispatchToProps)(VideoListItem));
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(VideoListItem));
