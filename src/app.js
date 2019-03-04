@@ -38,6 +38,7 @@ const theme = createMuiTheme({
             'Inter ui',
             'Roboto',
         ].join(','),
+        useNextVariants: true,
     },
     spacing: {
         unit: 8,

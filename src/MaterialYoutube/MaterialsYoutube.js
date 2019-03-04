@@ -8,6 +8,7 @@ import reducers from './reducers';
 import {Provider} from 'react-redux';
 import VideoList from './components/VideoList.js';
 import commonMiddleware from './middleware/CommonMiddleware.js';
+import VideoDetail from './components/videoDetail.js';
 
 const API_KEY = 'AIzaSyB5BKTc69oBzFC65U2OsNuC0QCMsgTSx2I';
 
@@ -45,10 +46,8 @@ export class MaterialsYoutube extends Component {
             <Provider store={createStoreWithMiddleware(reducers)}>
                 <div>
                     <SearchBar />
-                    {/*<VideoDetail video={this.state.selectedVideo}/>*/}
+                    <VideoDetail />
                     <VideoList />
-                    {/*videos={this.state.videos}*/}
-                    {/*onVideoSelect={this.selectVideo.bind(this)}/>*/}
                 </div>
             </Provider>
         );

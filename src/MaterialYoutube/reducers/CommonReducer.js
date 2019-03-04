@@ -15,6 +15,10 @@ export default function(state = defaultState, action) {
             newState.loading = false;
 
             return newState;
+        case 'SELECT_VIDEO':
+            newState.selectedVideo = action.payload;
+
+            return newState;
         default:
             return newState;
     }

@@ -7,6 +7,17 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = theme => {
     return ({
+        listContainerFull: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-evenly'
+        },
+        listContainer: {
+            display: 'flex',
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            justifyContent: 'space-evenly'
+        },
         loadingContainer: {
             display: 'flex',
             justifyContent: 'center',
@@ -27,10 +38,6 @@ class VideoList extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            videos: [],
-        };
     }
 
     renderEmpty() {
@@ -56,7 +63,7 @@ class VideoList extends Component {
     }
 
     render() {
-        const {videos, loading} = this.props;
+        const {videos, loading, classes, selectedVideo} = this.props;
 
         if (loading) {
             return this.renderLoading();
@@ -70,12 +77,11 @@ class VideoList extends Component {
             return <VideoListItem
                 key={video.etag}
                 video={video}
-                // onVideoSelect={props.onVideoSelect}
             />;
         });
 
         return (
-            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly'}}>
+            <div className={selectedVideo ? classes.listContainer : classes.listContainerFull}>
                 {
                     videoItems
                 }
@@ -89,7 +95,7 @@ const mapStateToProps = (state) => {
         videos: state.common.videos,
         loading: state.common.loading,
         search: state.common.search,
-        selectedVideos: state.common.selectedVideos,
+        selectedVideo: state.common.selectedVideo,
     };
 };
 
